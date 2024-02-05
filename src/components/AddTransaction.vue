@@ -1,15 +1,15 @@
 <template>
-    <h3>Add new transaction</h3>
+    <h3>Agregar transacción</h3>
     <form id="form" @submit.prevent="onSubmit">
         <div class="form-control">
-            <label for="text">Text</label>
-            <input type="text" id="text" v-model="text" placeholder="Enter text..." />
+            <label for="text">Descripción</label>
+            <input type="text" id="text" v-model="text" placeholder="Ingresar descripción..." />
         </div>
         <div class="form-control">
-            <label for="amount">Amount <br />(negative - expense, positive - income)</label>
-            <input type="text" v-model="amount" id="amount" placeholder="Enter amount..." />
+            <label for="amount">Monto</label>
+            <input type="text" v-model="amount" id="amount" placeholder="+50 para ingresos, -50 para gastos..." />
         </div>
-        <button class="btn">Add transaction</button>
+        <button class="btn">Agregar transacción</button>
     </form>
 </template>
 

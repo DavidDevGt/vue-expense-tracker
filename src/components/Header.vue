@@ -1,5 +1,5 @@
 <template>
-    <h2>Expense Tracker</h2>
+    <h2>Gastos e Ingresos Tracker</h2>
 </template>
 
 <script>
