@@ -7,7 +7,7 @@
         </div>
         <div class="form-control">
             <label for="amount">Monto</label>
-            <input type="text" v-model="amount" id="amount" placeholder="+50 para ingresos, -50 para gastos..." />
+            <input type="text" v-model="amount" id="amount" placeholder="500 para ingresos, -500 para gastos..." />
         </div>
         <button class="btn">Agregar transacción</button>
     </form>
