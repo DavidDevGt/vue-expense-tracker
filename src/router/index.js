@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// Usa el alias "@" para referenciar la carpeta "src"
-import Home from '@/components/Home.vue';
-import Login from '@/components/Login.vue';
-import Dashboard from '@/components/Dashboard.vue';
+import Home from '../components/Home.vue';
+import Login from '../components/Login.vue';
+import Dashboard from '../components/Dashboard.vue';
 
 const routes = [
   { path: '/', component: Home },
