@@ -2,7 +2,7 @@
   <div class="login-container">
     <input v-model="username" type="text" placeholder="Usuario" />
     <input v-model="password" type="password" placeholder="Contraseña" />
-    <button @click="login">Iniciar sesión</button>
+    <button class="btn" @click="login">Iniciar sesión</button>
   </div>
 </template>
 
@@ -30,4 +30,12 @@ const login = async () => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+</style>
