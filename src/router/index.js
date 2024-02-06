@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../components/Home.vue';
-import Login from '../components/Login.vue';
-import Dashboard from '../components/Dashboard.vue';
+import App from '@/App.vue';
+import LoginView from '@/views/LoginView.vue';
+import LogoutView from '@/views/LogoutView.vue';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/login', component: Login },
-  { path: '/dashboard', component: Dashboard, meta: { requiresAuth: true } },
+  { path: '/', component: App, meta: { requiresAuth: true } }, // Ruta raíz protegida
+  { path: '/login', component: LoginView },
+  { path: '/logout', component: LogoutView, meta: { requiresAuth: true } }, // Ruta de logout protegida
 ];
 
 const router = createRouter({
