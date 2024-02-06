@@ -89,7 +89,7 @@ const login = async () => {
 }
 
 .login-btn:hover {
-    background-color: #9c88ff;
+    background-color: #7D6ECC;
 }
 
 </style>

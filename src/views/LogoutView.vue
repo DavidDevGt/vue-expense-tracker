@@ -1,7 +1,7 @@
 <template>
     <div class="logout-message">
       <h1>Sesión cerrada con éxito</h1>
-      <p>Has cerrado sesión exitosamente. Gracias por usar nuestra aplicación.</p>
+      <p>¡Gracias por usar mi app!</p>
       <router-link to="/login" class="login-link">Iniciar sesión de nuevo</router-link>
     </div>
   </template>
@@ -17,7 +17,7 @@
 
 .login-link {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 7px;
   background-color: #9c88ff;
   color: white;
   padding: 10px 20px;
@@ -27,5 +27,6 @@
 
 .login-link:hover {
   background-color: #7D6ECC;
+  transition: background-color 0.3s ease;
 }
 </style>
