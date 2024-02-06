@@ -1,35 +1,35 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
 
-export default createStore({
-  state() {
-    return {
-      isAuthenticated: false,
-      user: null,
-      token: null,
-    };
+const store = createStore({
+  state: {
+    isAuthenticated: false,
+    user: null,
+    token: null,
   },
   mutations: {
-    authenticateUser(state, { user, token }) {
-      state.isAuthenticated = true;
-      state.user = user;
-      state.token = token;
+    setAuth(state, payload) {
+      state.isAuthenticated = payload.isAuthenticated;
+      state.user = payload.user;
+      state.token = payload.token;
     },
-    logoutUser(state) {
+    clearAuth(state) {
       state.isAuthenticated = false;
       state.user = null;
       state.token = null;
     },
   },
   actions: {
-    authenticateUser({ commit }, payload) {
-      commit("authenticateUser", payload);
+    login({ commit }, payload) {
+      commit('setAuth', {
+        isAuthenticated: true,
+        user: payload.user,
+        token: payload.token,
+      });
     },
-    logoutUser({ commit }) {
-      commit("logoutUser");
+    logout({ commit }) {
+      commit('clearAuth');
     },
-  },
-  getters: {
-    isAuthenticated: (state) => state.isAuthenticated,
-    user: (state) => state.user,
   },
 });
+
+export default store;
