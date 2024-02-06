@@ -1,33 +1,31 @@
 <template>
-    <button class="logoutBtn" @click="logout">Cerrar sesión</button>
-</template>
-  
+    <div class="logout-message">
+      <h1>Sesión cerrada con éxito</h1>
+      <p>Has cerrado sesión exitosamente. Gracias por usar nuestra aplicación.</p>
+      <router-link to="/login" class="login-link">Iniciar sesión de nuevo</router-link>
+    </div>
+  </template>
+
 <script>
-import AuthService from "@/services/AuthService";
-import { useToast } from "vue-toastification";
-
-const toast = useToast();
-
-const logout = async () => {
-    try {
-        await AuthService.logout();
-        localStorage.removeItem('user'); // Limpia el almacenamiento local
-        toast.success("Sesión cerrada");
-        router.push('/login'); // Redirige al usuario a la vista de login
-    } catch (error) {
-        toast.error(error.message);
-    }
-};
 </script>
   
 <style scoped>
-.logoutBtn {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+.logout-message {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.login-link {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #9c88ff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  background-color: #7D6ECC;
 }
 </style>
-  
