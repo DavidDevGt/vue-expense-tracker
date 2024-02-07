@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000/users';
+const API_URL = 'http://localhost/backend-expense-tracker/users';
 
 export default {
     async login(username, password) {

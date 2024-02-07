@@ -5,6 +5,7 @@
       <IncomeExpenses :income="+income" :expenses="+expenses" />
       <TransactionList :transactions="transactions" @transactionDeleted="handleTransactionDeleted" />
       <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
+      <Logout />
     </div>
     
   </template>
@@ -15,6 +16,7 @@
   import IncomeExpenses from '@/components/IncomeExpenses.vue';
   import TransactionList from '@/components/TransactionList.vue';
   import AddTransaction from '@/components/AddTransaction.vue';
+  import Logout from '@/components/Logout.vue';
   
   import { useToast } from 'vue-toastification';
   
