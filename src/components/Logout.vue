@@ -1,21 +1,14 @@
 <template>
-  <button class="logoutBtn" @click="logout">Cerrar sesión</button>
+  <button class="logoutBtn" @click="redirectToLogoutPage">Cerrar sesión</button>
 </template>
 
-<script>
-import AuthService from "@/services/AuthService";
-import { useToast } from "vue-toastification";
+<script setup>
+import { useRouter } from 'vue-router';
 
-const toast = useToast();
+const router = useRouter();
 
-const logout = async () => {
-  try {
-    await AuthService.logout();
-    // Manejar estado de autenticación
-    toast.success("Sesión cerrada");
-  } catch (error) {
-    toast.error(error.message);
-  }
+const redirectToLogoutPage = () => {
+  router.push('/logout'); // Redirige al usuario a la ruta de LogoutView
 };
 </script>
 

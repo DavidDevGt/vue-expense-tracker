@@ -9,26 +9,25 @@
     </div>
 </template>
 
-
-  
 <script setup>
 import AuthService from "@/services/AuthService";
 import { useToast } from "vue-toastification";
 import { ref } from "vue";
+import { useRouter } from 'vue-router'; // Importa useRouter
 
 const toast = useToast();
 const username = ref("");
 const password = ref("");
+const router = useRouter(); // Define router aquí
 
 const login = async () => {
     try {
         const data = await AuthService.login(username.value, password.value);
         if (data) {
-            localStorage.setItem('user', JSON.stringify(data)); // Almacena la respuesta del login
-
+            localStorage.setItem('user', JSON.stringify(data));
+            localStorage.setItem('token', data.token);
             toast.success(data.message);
-
-            router.push('/'); // Redirige al usuario a la ruta raíz o a cualquier otra ruta deseada
+            router.push('/'); // Ahora router está definido y puedes redirigir
         } else {
             toast.error(data.message);
         }
@@ -37,7 +36,7 @@ const login = async () => {
     }
 };
 </script>
-  
+
 <style scoped>
 .login-container {
     display: flex;

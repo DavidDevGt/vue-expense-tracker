@@ -1,12 +1,30 @@
 <template>
-    <div class="logout-message">
-      <h1>Sesión cerrada con éxito</h1>
-      <p>¡Gracias por usar mi app!</p>
-      <router-link to="/login" class="login-link">Iniciar sesión de nuevo</router-link>
-    </div>
-  </template>
+  <div class="logout-message">
+    <h1>Sesión cerrada con éxito</h1>
+    <p>¡Gracias por usar nuestra aplicación!</p>
+    <router-link to="/login" class="login-link">Iniciar sesión de nuevo</router-link>
+  </div>
+</template>
 
-<script>
+<script setup>
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import AuthService from "@/services/AuthService";
+import { useToast } from "vue-toastification";
+
+const router = useRouter();
+const toast = useToast();
+
+onMounted(async () => {
+  try {
+    await AuthService.logout();
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    toast.success("Sesión cerrada con éxito.");
+  } catch (error) {
+    toast.error("Error al cerrar sesión.");
+  }
+});
 </script>
   
 <style scoped>
