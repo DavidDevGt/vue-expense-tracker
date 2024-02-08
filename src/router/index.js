@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { jwtDecode } from "jwt-decode";
 import LoginView from "@/views/LoginView.vue";
 import LogoutView from "@/views/LogoutView.vue";
 import HomePage from "@/views/HomePage.vue"; // Asegúrate de importar tu nuevo componente de página principal aquí
@@ -6,7 +7,7 @@ import HomePage from "@/views/HomePage.vue"; // Asegúrate de importar tu nuevo 
 const routes = [
   { path: "/", component: HomePage, meta: { requiresAuth: true } }, // Usa HomePage como componente para la ruta raíz
   { path: "/login", component: LoginView },
-  { path: "/logout", component: LogoutView},
+  { path: "/logout", component: LogoutView },
 ];
 
 const router = createRouter({
@@ -16,11 +17,28 @@ const router = createRouter({
 
 // Ward para proteger rutas :v
 router.beforeEach((to, from, next) => {
-  const user = localStorage.getItem("user"); // Verifica si el usuario está almacenado en localStorage
-  if (to.meta.requiresAuth && !user) {
-    next("/login"); // Si no hay usuario, redirige a la página de login
+  const token = localStorage.getItem("token");
+  if (to.meta.requiresAuth && !token) {
+    next("/login");
+  } else if (token) {
+    try {
+      const decodedToken = jwtDecode(token);
+      const isTokenExpired = decodedToken.exp < Date.now() / 1000;
+
+      if (isTokenExpired) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        next("/login");
+      } else {
+        next();
+      }
+    } catch (e) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      next("/login");
+    }
   } else {
-    next(); // Si el usuario está autenticado o la ruta no requiere autenticación, continúa con la navegación
+    next();
   }
 });
 
