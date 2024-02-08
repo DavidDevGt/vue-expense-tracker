@@ -1,4 +1,4 @@
-const API_URL = "http://localhost/backend-expense-tracker/transactions";
+const API_URL = "https://api-money.davidwebgt.click/transactions";
 
 const getAuthHeader = () => {
   const user = JSON.parse(localStorage.getItem("user"));
