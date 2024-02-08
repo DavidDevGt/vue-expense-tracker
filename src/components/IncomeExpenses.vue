@@ -6,7 +6,7 @@
         </div>
         <div>
             <h4>Gastos</h4>
-            <p id="money-minus" class="money minus">-Q{{ expenses }}</p>
+            <p id="money-minus" class="money minus">-Q{{ Math.abs(expenses) }}</p>
         </div>
     </div>
 </template>

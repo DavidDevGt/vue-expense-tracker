@@ -22,6 +22,7 @@ export default {
         "Content-Type": "application/json",
         ...getAuthHeader(),
       },
+      credentials: "include",
     });
     console.log("Respuesta recibida:", response);
     if (!response.ok) {

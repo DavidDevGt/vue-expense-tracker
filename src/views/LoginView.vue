@@ -23,18 +23,20 @@ const router = useRouter(); // Define router aquí
 const login = async () => {
     try {
         const data = await AuthService.login(username.value, password.value);
-        if (data) {
+        if (data && data.success) { // Verifica que data existe y que success es true
             localStorage.setItem('user', JSON.stringify(data));
             localStorage.setItem('token', data.token);
             toast.success(data.message);
-            router.push('/'); // Ahora router está definido y puedes redirigir
+            router.push('/');
         } else {
-            toast.error(data.message);
+            // Muestra un mensaje de error si el inicio de sesión falla
+            toast.error(data.message || 'Inicio de sesión fallido');
         }
     } catch (error) {
         toast.error(error.message);
     }
 };
+
 </script>
 
 <style scoped>

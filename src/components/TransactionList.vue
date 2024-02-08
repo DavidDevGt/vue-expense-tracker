@@ -40,7 +40,7 @@ const paginatedTransactions = computed(() => {
 
 const deleteTransaction = (id) => {
     emit('transactionDeleted', id);
-    
+
     nextTick(() => {
         if (currentPage.value > totalPages.value) {
             currentPage.value = totalPages.value; // Retrocede a la última página disponible
@@ -93,10 +93,18 @@ const prevPage = () => {
 
 /* Contenedor de la descripción */
 .list li .transaction-text {
-    flex-grow: 1; /* Permite que la descripción ocupe el espacio disponible */
-    margin-right: 10px; /* Espacio entre la descripción y el monto */
+    flex-grow: 1;
+    /* Permite que la descripción ocupe el espacio disponible */
+    margin-right: 10px;
+    /* Espacio entre la descripción y el monto */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.pagination button:disabled {
+    background-color: #8FA2FA; /* Color más claro para indicar que está deshabilitado */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
+}
+
 </style>

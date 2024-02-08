@@ -3,7 +3,7 @@
     <form id="form" @submit.prevent="onSubmit">
         <div class="form-control">
             <label for="text">Descripción</label>
-            <input type="text" id="text" v-model="text" placeholder="Ingresar descripción..." />
+            <input type="text" id="text" v-model="text" placeholder="Ingresar descripción..." ref="descriptionRef" />
         </div>
         <div class="form-control">
             <label for="amount">Monto</label>
@@ -19,6 +19,7 @@ import {useToast} from 'vue-toastification';
 
 const text = ref('');
 const amount = ref('');
+const descriptionRef = ref(null);
 
 const emit = defineEmits(['transactionSubmitted']);
 
@@ -39,5 +40,9 @@ const onSubmit = () => {
 
     text.value = '';
     amount.value = '';
+
+    // Devolver el foco al input de la descripción
+    descriptionRef.value.focus();
 };
+
 </script>
