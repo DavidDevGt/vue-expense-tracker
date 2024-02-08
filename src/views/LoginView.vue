@@ -21,6 +21,10 @@ const password = ref("");
 const router = useRouter(); // Define router aquí
 
 const login = async () => {
+    if (!username.value || !password.value) {
+        toast.error("Por favor, ingresa tu usuario y contraseña.");
+        return;
+    }
     try {
         const data = await AuthService.login(username.value, password.value);
         if (data && data.success) { // Verifica que data existe y que success es true
@@ -36,7 +40,6 @@ const login = async () => {
         toast.error(error.message);
     }
 };
-
 </script>
 
 <style scoped>
@@ -92,5 +95,4 @@ const login = async () => {
 .login-btn:hover {
     background-color: #7D6ECC;
 }
-
 </style>

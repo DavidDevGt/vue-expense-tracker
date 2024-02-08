@@ -40,7 +40,7 @@
   color: white;
   font-size: 1.5em;
   cursor: pointer;
-  z-index: 2; /* Asegúrate de que el botón esté sobre el menú desplegable */
+  z-index: 2;
 }
 
 .navbar-menu {
@@ -49,20 +49,20 @@
   align-items: flex-start;
   background-color: white;
   position: absolute;
-  top: 50px; /* Ajusta según la altura de tu navbar */
-  right: 10px; /* Ajusta según el diseño de tu navbar */
+  top: 50px;
+  right: 10px;
   left: 0;
   padding: 10px;
   box-shadow: var(--box-shadow);
   border-radius: 5px;
   color: black;
-  width: 100%; /* O ajusta al ancho que prefieras */
-  z-index: 1; /* Establece el z-index para el menú desplegable */
+  width: 100%;
+  z-index: 1;
 }
 
 .logoutBtn {
   margin-top: 10px;
-  width: 100%; /* Hacer que el botón ocupe todo el ancho del menú desplegable */
+  width: 100%;
 }
 
   </style>
