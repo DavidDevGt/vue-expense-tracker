@@ -2,15 +2,20 @@ const API_URL = "http://localhost/backend-expense-tracker/transactions";
 
 const getAuthHeader = () => {
   const user = JSON.parse(localStorage.getItem("user"));
+  console.log("Usuario obtenido del localStorage:", user);
   if (user && user.token) {
+    console.log("Token encontrado:", user.token);
     return { Authorization: "Bearer " + user.token };
   } else {
+    console.log("No se encontró token");
     return {};
   }
 };
 
 export default {
   async getTransactions() {
+    console.log("Obteniendo transacciones...");
+    console.log("URL: ", API_URL);
     const response = await fetch(API_URL, {
       method: "GET",
       headers: {
@@ -18,12 +23,13 @@ export default {
         ...getAuthHeader(),
       },
     });
+    console.log("Respuesta recibida:", response);
     if (!response.ok) {
+      console.log("Error al obtener las transacciones", response);
       throw new Error("Error al obtener las transacciones");
     }
     return response.json();
   },
-
   async createTransaction(text, amount) {
     const response = await fetch(API_URL, {
       method: "POST",
