@@ -107,11 +107,22 @@ input[type='text'], input[type='number'], input[type='password'], .btn {
   border: 0;
 }
 
+.list li {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  position: relative; /* Asegúrate de que los elementos de la lista tengan posición relativa */
+  padding: 10px;
+  margin: 10px 0;
+}
+
 .delete-btn {
   cursor: pointer;
-  background-color: #e74c3c;
+  background-color: var(--error-color);
   border: 0;
-  color: #fff;
+  color: var(--btn-text-color);
   font-size: 20px;
   line-height: 20px;
   padding: 2px 5px;
