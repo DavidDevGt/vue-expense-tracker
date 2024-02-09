@@ -1,145 +1,115 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Protest+Strike&display=swap');
 
 :root {
+  --background-color: #f7f7f7;
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --text-color: #333;
+  --border-color: #dedede;
+  --btn-bg-color: #4c51bf;
+  --btn-text-color: #fff;
+  --income-color: #2ecc71;
+  --expense-color: #c0392b;
+  --error-color: #e74c3c;
+  --font-size-base: 16px; /* Ajustado para móviles */
+  --font-size-large: 20px;
+  --font-family: 'Poppins', sans-serif;
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif!important;
+  font-family: var(--font-family) !important;
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   margin: 0;
-  font-size: 18px;
+  font-size: var(--font-size-base);
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: 'Protest Strike', sans-serif;
 }
 
 .container {
-  margin: 30px auto;
-  width: 400px;
+  margin: 20px;
+  width: 90%;
+}
+
+h1, h3, h4, .money {
+  margin: 10px 0;
 }
 
 h1 {
   letter-spacing: 1px;
-  margin: 0;
 }
 
 h3 {
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
-  margin: 40px 0 10px;
 }
 
 h4 {
-  margin: 0;
   text-transform: uppercase;
 }
 
-.inc-exp-container {
+.inc-exp-container, .list li {
   background-color: #fff;
   box-shadow: var(--box-shadow);
-  padding: 20px;
+  padding: 15px;
+  margin: 10px 0;
   display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-}
-
-.inc-exp-container > div {
-  flex: 1;
-  text-align: center;
-}
-
-.inc-exp-container > div:first-of-type {
-  border-right: 1px solid #dedede;
+  flex-direction: column;
+  align-items: center;
 }
 
 .money {
-  font-size: 20px;
-  letter-spacing: 1px;
+  font-size: var(--font-size-large);
   margin: 5px 0;
 }
 
 .money.plus {
-  color: #2ecc71;
+  color: var(--income-color);
 }
 
 .money.minus {
-  color: #c0392b;
+  color: var(--expense-color);
 }
 
-label {
-  display: inline-block;
-  margin: 10px 0;
-}
-
-input[type='text'],
-input[type='number'],
-input[type='password'] {
-  border: 1px solid #dedede;
+input[type='text'], input[type='number'], input[type='password'], .btn {
+  border: 1px solid var(--border-color);
   border-radius: 2px;
-  display: block;
-  font-size: 16px;
   padding: 10px;
   width: 100%;
+  margin: 10px 0;
 }
 
 .btn {
-  cursor: pointer;
-  background-color: #4c51bf;
-  box-shadow: var(--box-shadow);
-  color: #fff;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
   border: 0;
-  display: block;
-  font-size: 16px;
-  margin: 10px 0 30px;
-  padding: 10px;
-  width: 100%;
-}
-
-.btn:focus,
-.delete-btn:focus {
-  outline: 0;
-}
-
-.list {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 40px;
-}
-
-.list li {
-  background-color: #fff;
-  box-shadow: var(--box-shadow);
-  color: #333;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.list li.plus {
-  border-right: 5px solid #2ecc71;
-}
-
-.list li.minus {
-  border-right: 5px solid #c0392b;
 }
 
 .delete-btn {
-  cursor: pointer;
-  background-color: #e74c3c;
-  border: 0;
-  color: #fff;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 2px 5px;
+  background-color: var(--error-color);
+  color: var(--btn-text-color);
   position: absolute;
   top: 50%;
   left: 0;
@@ -150,4 +120,29 @@ input[type='password'] {
 
 .list li:hover .delete-btn {
   opacity: 1;
+}
+
+/* Pantallas medianas (tabletas) */
+@media (min-width: 601px) {
+  .container {
+    width: 80%;
+  }
+
+  .inc-exp-container, .list li {
+    /* AJUSTE PARA PC DESKTOP */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Pantallas grandes (desktops) */
+@media (min-width: 901px) {
+  body {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 600px;
+  }
 }
