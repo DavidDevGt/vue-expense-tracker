@@ -93,6 +93,14 @@ h4 {
   color: var(--expense-color);
 }
 
+.minus {
+  background-color: #B5FFD4;
+}
+
+.plus {
+  background-color: #FFCBC5;
+}
+
 input[type='text'], input[type='number'], input[type='password'], .btn {
   border: 1px solid var(--border-color);
   border-radius: 2px;
