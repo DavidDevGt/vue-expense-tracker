@@ -93,11 +93,11 @@ h4 {
   color: var(--expense-color);
 }
 
-.list .minus {
+.list .plus {
   background-color: #B5FFD4;
 }
 
-.list .plus {
+.list .minus {
   background-color: #FFCBC5;
 }
 
